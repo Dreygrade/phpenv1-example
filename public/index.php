@@ -1,6 +1,7 @@
 <?php
 
 use Medoo\Medoo;
+
 require_once '../vendor/autoload.php';
 
 echo "Hello World";
@@ -12,8 +13,15 @@ $database = new medoo([
     'database_file' => '../storage/database.db'
 ]);
 
-dump($array);
-dump($database);
+$comment = new SitePoint\Comment($database);
+$comment->setEmail('bruno@skvorc.me')
+  ->setName('Bruno Skvorc')
+  ->setComment('It works!')
+  ->setComment('Hooray! Saving comments works!')
+  ->save();
+dump($database->error());
+//dump($array);
+//dump($comment);
 ?>
 
 
