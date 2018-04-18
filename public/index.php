@@ -3,19 +3,38 @@
 use Medoo\Medoo;
 
 require_once '../vendor/autoload.php';
+//$array = [1, "apple", 2, "foo", "bar"];
 
-echo "Hello World";
+/*$database = new medoo([
+    'database_type' => 'sqlite',
+    'database_file' => '../storage/database.db'
+]);
 
-$array = [1, "apple", 2, "foo", "bar"];
+$comment = new SitePoint\Comment($database);
+$comment->setEmail('bruno@skvorc.me')
+  ->setName('Bruno Skvorc')
+  ->setComment('It works!It works!It works!It works!It works!Hooray! Saving comments works!Hooray! Saving comments works!Hooray! Saving comments works!Hooray! Saving comments works!')
+  ->setComment('Hooray! Saving comments works!Hooray! Saving comments works!Hooray! Saving comments works!Hooray! Saving comments works!Hooray! Saving comments works!Hooray! Saving comments works!Hooray! Saving comments works!')
+  ->save();*/
 
+// Medoo initialisation
 $file = '../storage/database.db';
 if (is_writable('../storage/database.local.db')) {
-    $file = '../storage/database.local.db';
+$file = '../storage/database.local.db';
 }
+
 $database = new medoo([
     'database_type' => 'sqlite',
     'database_file' => $file
 ]);
+
+$comment = new SitePoint\Comment($database);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    echo "Form was submitted!";
+}
+
+
 
 ?>
 

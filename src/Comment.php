@@ -2,12 +2,12 @@
 namespace SitePoint;
 class Comment
 {
-    protected $database;
-    protected $name;
-    protected $email;
-    protected $comment;
-    protected $submissionDate;
-    public function __construct(\medoo $medoo)
+    public $database;
+    public $name;
+    public $email;
+    public $comment;
+    public $submissionDate;
+    public function __construct($medoo)
     {
         $this->database = $medoo;
     }
